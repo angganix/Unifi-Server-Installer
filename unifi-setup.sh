@@ -85,3 +85,5 @@ systemctl status unifi
 
 # Finished
 echo "UniFi Controller and MongoDB 8.0 setup is complete. Access the UniFi Controller at https://<YOUR-IP>:8443"
+
+#Edited by Irwan
