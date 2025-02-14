@@ -31,11 +31,11 @@ apt install -y libssl1.1
 rm /etc/apt/sources.list.d/bullseye.list
 apt update
 
-# Add MongoDB 4.4 repository
-curl -fsSL https://www.mongodb.org/static/pgp/server-4.4.asc | gpg --dearmor -o /usr/share/keyrings/mongodb-server-4.4.gpg
-echo "deb [signed-by=/usr/share/keyrings/mongodb-server-4.4.gpg] http://repo.mongodb.org/apt/debian buster/mongodb-org/4.4 main" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
+# Add MongoDB 8.0 repository
+curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/8.0 main" | tee /etc/apt/sources.list.d/mongodb-org-8.0.list
 
-# Install MongoDB 4.4
+# Install MongoDB 8.0
 apt update
 apt install -y mongodb-org
 
@@ -54,8 +54,8 @@ fi
 # Add directory to PATH
 export PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin
 
-# Download and install UniFi Controller 7.5 from provided URL
-wget https://dl.ubnt.com/unifi/8.4.59/unifi_sysvinit_all.deb -O /tmp/unifi_sysvinit_all.deb
+# Download and install UniFi Controller 9.0 from provided URL
+wget https://dl.ubnt.com/unifi/9.0.108/unifi_sysvinit_all.deb -O /tmp/unifi_sysvinit_all.deb
 dpkg -i /tmp/unifi_sysvinit_all.deb
 
 # Fix broken dependencies if any
@@ -84,4 +84,4 @@ fi
 systemctl status unifi
 
 # Finished
-echo "UniFi Controller and MongoDB 4.4 setup is complete. Access the UniFi Controller at https://<YOUR-IP>:8443"
+echo "UniFi Controller and MongoDB 8.0 setup is complete. Access the UniFi Controller at https://<YOUR-IP>:8443"
